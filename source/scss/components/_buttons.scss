@@ -1,0 +1,38 @@
+@mixin btn-color($color) {
+  background-color: $color;
+  color: #fff;
+  &:hover,
+  &:focus {
+    background-color: mix($color, #fff, 60%);
+  }
+}
+
+.btn {
+  @include btn-color($color-black);
+  @include h4-font();
+  line-height: 1;
+  border: none;
+  padding: 0.66em 1.32em;
+  white-space: nowrap;
+  vertical-align: middle;
+  cursor: pointer;
+  user-select: none;
+  border-radius: 0;
+  display: inline-block;  // <a>
+  text-align: center;     // <a>
+  text-decoration: none;  // <a>
+}
+
+.btn-primary {
+  @include btn-color($color-primary);
+}
+
+.btn-secondary {
+  @include btn-color($color-secondary);
+}
+
+.btn[disabled] {
+  background: #CCC;
+  color: gray;
+  cursor: default;
+}

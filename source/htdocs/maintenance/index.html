@@ -1,0 +1,110 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+    <title>Client</title>
+
+    <style>
+    html,
+    body {
+      background-color: #000000;
+      height: 100%;
+      text-align: center;
+    }
+
+    .align {
+      height: 100%;
+      display: -webkit-box;
+      display: -webkit-flex;
+      display: -ms-flexbox;
+      display: flex;
+      -webkit-box-align: center;
+      -webkit-align-items: center;
+          -ms-flex-align: center;
+              align-items: center;
+      -webkit-box-pack: center;
+      -webkit-justify-content: center;
+          -ms-flex-pack: center;
+              justify-content: center;
+    }
+
+    p {
+      font-family: "HelveticaNeue", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+      font-size: 12px;
+      letter-spacing: 0.080em;
+      font-weight: 100;
+      line-height: 1.5;
+      color: #D8D8D8;
+      -webkit-animation-name: fadeIn;
+              animation-name: fadeIn;
+      -webkit-animation-duration: 1550ms;
+              animation-duration: 1550ms;
+      -webkit-transition-timing-function: ease-out;
+              transition-timing-function: ease-out;
+      -webkit-animation-fill-mode: both;
+              animation-fill-mode: both;
+      -webkit-animation-delay: 800ms;
+              animation-delay: 800ms;
+      -webkit-font-smoothing: antialiased;
+      width:100%;
+      margin-top: 30px;
+    }
+
+    img {
+      -webkit-animation-name: fadeIn;
+              animation-name: fadeIn;
+      -webkit-animation-duration: 1550ms;
+              animation-duration: 1550ms;
+      -webkit-transition-timing-function: ease-out;
+              transition-timing-function: ease-out;
+      -webkit-animation-fill-mode: both;
+              animation-fill-mode: both;
+      -webkit-animation-delay: 400ms;
+              animation-delay: 400ms;
+    }
+
+    @-webkit-keyframes fadeIn {
+      0% {
+        opacity: 0;
+        filter: alpha(opacity=0);
+        -webkit-transform: translateY(5px);
+                transform: translateY(5px);
+
+      }
+      100% {
+        opacity: 1;
+        filter: alpha(opacity=100);
+        -webkit-transform: translateY(0);
+                transform: translateY(0);
+      }
+    }
+
+    @keyframes fadeIn {
+      0% {
+        opacity: 0;
+        filter: alpha(opacity=0);
+        -webkit-transform: translateY(5px);
+                transform: translateY(5px);
+
+      }
+      100% {
+        opacity: 1;
+        filter: alpha(opacity=100);
+        -webkit-transform: translateY(0);
+                transform: translateY(0);
+      }
+    }
+    </style>
+  </head>
+  <body>
+    <div class="align">
+      <div class="align-item">
+        <img width="150" alt="Nextbit" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMgAAADICAMAAACahl6sAAACLlBMVEUAAAD///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////8hUBqnAAAAuXRSTlMAAAECAwQFBgcICQoLDA0ODxESFRYaGxweHyAhIiMkJSYnKCkqKywtMDI0Njg5Ojs9P0BBQ0RFRkdISktQUVJUVVZXWVpbXF5fYWhpamtsbW5vc3h6fH1+f4CBg4WGh4iJiouNjpCSk5eYmZqbnJ2eoKKjpKWmp6ytr7CxsrO0tba3ubq7vL7AwcLDxMfIycrLzM3Oz9LU1dbY2tvc3d/h4uPk5ebn6uvs7u/w8vP09fb3+Pn6+/z9/sf6MWcAAAPwSURBVHgB7dv5VxV1GMfxp8u1exFNMWhRoX0vSiuIFsXFLBeysojyki1WGqWVZiKFhkpopZlaqaAEkhdbWAbp8991Wjo+M3fuMvz0fOd83v/B6zxn5vs9z5yRq2ISIYQQQgghhBBCCCGEEEIIIYQQQgghhBBCCCGEEEIIIYQQQgghhBBCCCGEEEIIIYQQQkh8IJKnsrvXbtl/engMuDx88os3nl4gYVmHzF61O4tAA+81znAMct/HvyO0ocz1DkEWH0D+vO03OgJZ0InCTbw52wFIcuMYinbuMfOQ6kMoqbdTtiGLhlFivVWWISs8lFx/rV3ImilEaOhOq5BVfyJSP9fYhNR7iNjpeRYhC7MI6dcj2ze/3Lp514lQ5cGkPUjqe+R0tvXepPxXRcPWEeT0qj1IBsGONCbEV8Wa8wg0VWcNcvsk/A00SW4zWybg74erbUESPfD3WaWEdtdP8NVfYwvyJPy1Sr7mdEPVPkdsQY7CV7PkL9WJ/xt8QsQWpLHYPHTpw/i3nfPEGmQvdB0JKVjVEAD8slTEGuTaSaguVEqR6v/WWrz9boBuhRTtk0urRQxCDkB1XIpXfZ1YhKRHoVoiEbIFWQzVhaS7kBegekvchXwAVYPDkF7lmKpwGNKvIH3iMOSSgux3GXJZQT51GQLVDk7E2DOyT2Ly1jorPEeMnez1wruWrdvvUNJdSPkoVE+5C5GDUB1zGPI8dMvdhVQFtijOQqQTuj0JKdjM+TrLm8YWKVSqByrPFESOw9c6yd+MDugGbW/j889k1j74OmYLkjgMf7vnSmi3nYK/LlsQuWMS/s4vkdxSL44jULsxiLQhWE+j+Es/24ecMtYg6RPI6cwrV77qlj/67kWE9Jw1iNSOIKSR3g8zG1syu77zEN5ycxBpmMQ0WmQPIqsxjW41CJG1iF6lRYis9BCxCTEJkYcvIloDRiFS/RUiddQqRJIvjSNCXcYgupoulF67OYjukUPIn9euR7bJIER3/84/ENpw2w3lUK23/7fCMx1ZBBrc9nhKZCFUy6xCdGX3NL/TfSbrARPZk51bVtbKP9VB9ZB1iC5VJrplUN3iECTYBqjmOgx5XTnGxWHIRwpyzmVIt4J86zLkRwX53GVIVkHedxiShmqTw5D5UK13GPIAVE0OQ5ZC9aDDkGaobnYY0gbVNQ5DdijHmDgM+VJB+l2GnFKQb2xCWkvqNwXZaxOCyG2LC+S1uEDWxQXSFBdIXVwgN8UFMismkFGJCaQvLpCv4wLZExfIVgMQAxFiLUIIIYQQQgghhBBCCCGEEEIIIYQQQgghhBBCCCGEEEIIIYQQQgghhBBCCCGEEEIIIeQv25IjCfB6uaYAAAAASUVORK5CYII=" />
+        <p>We're currently updating our website.<br>Please check back momentarily.</p>
+      </div>
+    </div>
+  </body>
+</html>

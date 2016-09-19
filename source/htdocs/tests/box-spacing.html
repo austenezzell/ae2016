@@ -1,0 +1,151 @@
+@@include('htdocs/_templates/_header.html', { "title": "Box Spacing Test", "description": "Page Description" })
+<style>
+.rapper {
+  border: 1px solid black;
+  background: rgba(0,0,0,0.25);
+  margin: 2em auto;
+  max-width: 640px;
+}
+h3 {
+  text-align: center;
+}
+span {
+  display: block;
+  background: rgba(0,0,0,0.25);
+  border: 1px solid rgba(0,0,0,0.25);
+}
+  span::after {
+    content: attr(class);
+    background-color: rgba(0,0,0,0.25);
+    width: 100%;
+    display: block;
+    color: white;
+  }
+</style>
+<div class="rapper">
+  <h3>margin-xs</h3>
+  <span class="margin-xs-0"></span>
+  <span class="margin-xs-1x"></span>
+  <span class="margin-xs-2x"></span>
+  <span class="margin-xs-3x"></span>
+  <span class="margin-xs-4x"></span>
+</div>
+
+<div class="rapper">
+  <h3>margin-y-xs</h3>
+  <span class="margin-y-xs-0"></span>
+  <span class="margin-y-xs-1x"></span>
+  <span class="margin-y-xs-2x"></span>
+  <span class="margin-y-xs-3x"></span>
+  <span class="margin-y-xs-4x"></span>
+</div>
+
+<div class="rapper">
+  <h3>margin-x-xs</h3>
+  <span class="margin-x-xs-0"></span>
+  <span class="margin-x-xs-1x"></span>
+  <span class="margin-x-xs-2x"></span>
+  <span class="margin-x-xs-3x"></span>
+  <span class="margin-x-xs-4x"></span>
+</div>
+
+<div class="rapper">
+  <h3>margin-top-xs</h3>
+  <span class="margin-top-xs-0"></span>
+  <span class="margin-top-xs-1x"></span>
+  <span class="margin-top-xs-2x"></span>
+  <span class="margin-top-xs-3x"></span>
+  <span class="margin-top-xs-4x"></span>
+</div>
+
+<div class="rapper">
+  <h3>margin-bottom-xs</h3>
+  <span class="margin-bottom-xs-0"></span>
+  <span class="margin-bottom-xs-1x"></span>
+  <span class="margin-bottom-xs-2x"></span>
+  <span class="margin-bottom-xs-3x"></span>
+  <span class="margin-bottom-xs-4x"></span>
+</div>
+
+<div class="rapper">
+  <h3>margin-left-xs</h3>
+  <span class="margin-left-xs-0"></span>
+  <span class="margin-left-xs-1x"></span>
+  <span class="margin-left-xs-2x"></span>
+  <span class="margin-left-xs-3x"></span>
+  <span class="margin-left-xs-4x"></span>
+</div>
+
+<div class="rapper">
+  <h3>margin-right-xs</h3>
+  <span class="margin-right-xs-0"></span>
+  <span class="margin-right-xs-1x"></span>
+  <span class="margin-right-xs-2x"></span>
+  <span class="margin-right-xs-3x"></span>
+  <span class="margin-right-xs-4x"></span>
+</div>
+
+<div class="rapper">
+  <h3>padding-xs</h3>
+  <span class="padding-xs-0"></span>
+  <span class="padding-xs-1x"></span>
+  <span class="padding-xs-2x"></span>
+  <span class="padding-xs-3x"></span>
+  <span class="padding-xs-4x"></span>
+</div>
+
+<div class="rapper">
+  <h3>padding-y-xs</h3>
+  <span class="padding-y-xs-0"></span>
+  <span class="padding-y-xs-1x"></span>
+  <span class="padding-y-xs-2x"></span>
+  <span class="padding-y-xs-3x"></span>
+  <span class="padding-y-xs-4x"></span>
+</div>
+
+<div class="rapper">
+  <h3>padding-x-xs</h3>
+  <span class="padding-x-xs-0"></span>
+  <span class="padding-x-xs-1x"></span>
+  <span class="padding-x-xs-2x"></span>
+  <span class="padding-x-xs-3x"></span>
+  <span class="padding-x-xs-4x"></span>
+</div>
+
+<div class="rapper">
+  <h3>padding-top-xs</h3>
+  <span class="padding-top-xs-0"></span>
+  <span class="padding-top-xs-1x"></span>
+  <span class="padding-top-xs-2x"></span>
+  <span class="padding-top-xs-3x"></span>
+  <span class="padding-top-xs-4x"></span>
+</div>
+
+<div class="rapper">
+  <h3>padding-bottom-xs</h3>
+  <span class="padding-bottom-xs-0"></span>
+  <span class="padding-bottom-xs-1x"></span>
+  <span class="padding-bottom-xs-2x"></span>
+  <span class="padding-bottom-xs-3x"></span>
+  <span class="padding-bottom-xs-4x"></span>
+</div>
+
+<div class="rapper">
+  <h3>padding-left-xs</h3>
+  <span class="padding-left-xs-0"></span>
+  <span class="padding-left-xs-1x"></span>
+  <span class="padding-left-xs-2x"></span>
+  <span class="padding-left-xs-3x"></span>
+  <span class="padding-left-xs-4x"></span>
+</div>
+
+<div class="rapper">
+  <h3>padding-right-xs</h3>
+  <span class="padding-right-xs-0"></span>
+  <span class="padding-right-xs-1x"></span>
+  <span class="padding-right-xs-2x"></span>
+  <span class="padding-right-xs-3x"></span>
+  <span class="padding-right-xs-4x"></span>
+</div>
+
+@@include('htdocs/_templates/_footer.html')

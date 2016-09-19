@@ -1,0 +1,70 @@
+@font-face {
+  font-family: 'mark-pro-regular';
+  src: url('/fonts/mark-pro/markPro.eot');
+  src: url('/fonts/mark-pro/markPro.eot?#iefix') format('embedded-opentype'),
+       url('/fonts/mark-pro/markPro.woff') format('woff'),
+       url('/fonts/mark-pro/markPro.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'mark-pro-bold';
+  src: url('/fonts/mark-pro/markPro-Bold.eot');
+  src: url('/fonts/mark-pro/markPro-Bold.eot?#iefix') format('embedded-opentype'),
+       url('/fonts/mark-pro/markPro-Bold.woff') format('woff'),
+       url('/fonts/mark-pro/markPro-Bold.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'mark-pro-medium';
+  src: url('/fonts/mark-pro/markPro-Medium.eot');
+  src: url('/fonts/mark-pro/markPro-Medium.eot?#iefix') format('embedded-opentype'),
+       url('/fonts/mark-pro/markPro-Medium.woff') format('woff'),
+       url('/fonts/mark-pro/markPro-Medium.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'mark-pro-light';
+  src: url('/fonts/mark-pro/markPro-Light.eot');
+  src: url('/fonts/mark-pro/markPro-Light.eot?#iefix') format('embedded-opentype'),
+       url('/fonts/mark-pro/markPro-Light.woff') format('woff'),
+       url('/fonts/mark-pro/markPro-Light.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+
+@mixin small-font() {
+  @include font-size($small-font-size);
+  line-height: $body-line-height;
+}
+
+@mixin body-font() {
+  @include font-size($body-font-size);
+  line-height: $body-line-height;
+}
+
+@mixin h4-font {
+  @include font-size($h4-font-size);
+  line-height: $body-line-height;
+}
+
+@mixin h3-font {
+  @include font-size($h3-font-size);
+  line-height: $header-line-height;
+}
+
+@mixin h2-font {
+  @include font-size($h2-font-size);
+  line-height: $header-line-height;
+}
+
+@mixin h1-font {
+  @include font-size($h1-font-size);
+  line-height: $header-line-height;
+}

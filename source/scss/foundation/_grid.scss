@@ -1,0 +1,142 @@
+@mixin grid() {
+  // Mixin protects these variables and extends
+  $grid-columns: 12;
+  $grid-max-width: 100%;
+  $grid-gutter-width: $base-spacing;
+
+  %grid-gutter {
+    padding-left: ($grid-gutter-width / 1.5);
+    padding-right: ($grid-gutter-width / 1.5);
+  }
+
+  .wrap {
+    @extend %grid-gutter;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: $grid-max-width;
+  }
+
+  .row {
+    margin-left: ($grid-gutter-width / 1.5) * -1;
+    margin-right: ($grid-gutter-width / 1.5) * -1;
+    @extend .flex;
+  }
+
+  .flex {
+    display: flex;
+    flex: 0 1 auto;
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+
+  .row.reverse {
+    flex-direction: row-reverse;
+  }
+
+  .col {
+    @extend %grid-gutter;
+    position: relative;
+    flex: 0 0 auto;
+  }
+
+  // see _variables.scss for breakpoint definitions
+  @each $breakpoint in $breakpoints {
+
+    @include breakpoint($breakpoint) {
+
+      @for $i from 1 through $grid-columns {
+        .span-#{$breakpoint}-#{$i} {
+          flex-basis: percentage((1 / $grid-columns) * $i);
+          max-width: percentage((1 / $grid-columns) * $i);
+        }
+        .push-#{$breakpoint}-#{$i} {
+          left: percentage((1 / $grid-columns)) * $i;
+        }
+        .pull-#{$breakpoint}-#{$i} {
+          right: percentage((1 / $grid-columns)) * $i;
+        }
+        .offset-#{$breakpoint}-#{$i} {
+          margin-left: percentage((1 / $grid-columns)) * $i;
+        }
+      }
+
+      .push-#{$breakpoint}-0 {
+        left: 0;
+      }
+      .pull-#{$breakpoint}-0 {
+        right: 0;
+      }
+      .offset-#{$breakpoint}-0 {
+        margin-left: 0;
+      }
+
+      .span-#{$breakpoint} {
+        flex-grow: 1;
+        flex-basis: 0;
+        max-width: 100%;
+      }
+
+      .offset-#{$breakpoint}-0 {
+        margin-left: 0;
+        margin-right: 0;
+      }
+
+      .start-#{$breakpoint} {
+        justify-content: flex-start;
+        text-align: start;
+      }
+
+      .center-#{$breakpoint} {
+        justify-content: center;
+        text-align: center;
+      }
+
+      .end-#{$breakpoint} {
+        justify-content: flex-end;
+        text-align: end;
+      }
+
+      .top-#{$breakpoint} {
+        align-items: flex-start;
+      }
+
+      .middle-#{$breakpoint} {
+        align-items: center;
+      }
+
+      .bottom-#{$breakpoint} {
+        align-items: flex-end;
+      }
+
+      .col.top-#{$breakpoint} {
+        align-self: flex-start;
+      }
+
+      .col.middle-#{$breakpoint} {
+        align-self: center;
+      }
+
+      .col.bottom-#{$breakpoint} {
+        align-self: flex-end;
+      }
+
+      .around-#{$breakpoint} {
+        justify-content: space-around;
+      }
+
+      .between-#{$breakpoint} {
+        justify-content: space-between;
+      }
+
+      .first-#{$breakpoint} {
+        order: -1;
+      }
+
+      .last-#{$breakpoint} {
+        order: 1;
+      }
+    }
+  }
+}
+
+@include grid();

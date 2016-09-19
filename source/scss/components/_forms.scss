@@ -1,0 +1,65 @@
+/*
+Form Controls
+
+For filling.
+
+Style guide: Components.Forms
+*/
+
+input, textarea {
+  @include regular-font();
+  @include small-font();
+  border: 1px solid #111;
+  padding: 8px;
+  margin: 0 1em 0 0;
+  vertical-align: middle;
+  outline: none;
+  &:hover,
+  &:focus {
+    border-color: #00a9c5;
+  }
+}
+
+/*
+Input
+
+Markup:
+<input type="text">
+
+Style guide: Components.Forms.Inputs
+*/
+
+input[type=text] {}
+
+/*
+Textarea
+
+Markup:
+<textarea></textarea>
+
+Style guide: Components.Forms.Textarea
+*/
+
+textarea {}
+
+/*
+Radio
+
+Markup:
+<label><input type="radio">Radio</label>
+
+Style guide: Components.Forms.Radio
+*/
+
+input[type=radio] {}
+
+/*
+Checkbox
+
+Markup:
+<label><input type="checkbox">Checkbox</label>
+
+Style guide: Components.Forms.Checkbox
+*/
+
+input[type=checkbox] {}
