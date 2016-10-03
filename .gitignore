@@ -4,5 +4,4 @@
 /bower_components/*
 /node_modules/*
 /build/*
-*.sublime-workspace
-/styleguide/*
+*.log

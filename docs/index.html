@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Page Description">
+    <title>Bruno</title>
+    <link rel="stylesheet" href="css/styles.min.css">
+  </head>
+  <body>
+
+
+<style>
+  .row [class*="col-"] {
+    min-height: 50px;
+    line-height: 50px;
+  }
+
+  .row {
+    margin-bottom: 40px;
+  }
+
+  .row .row {
+    margin-bottom: 0;
+  }
+
+  code {
+    display: inline;
+    background: #eee;
+    font-size: 100%;
+    font-weight: bold;
+    padding: 0 6px;
+    border-radius: 6px;
+    white-space: nowrap;
+    font-family: 'Source Code Pro', monospace;
+  }
+</style>
+
+<div class="wrap showgrid">
+
+  <header class="margin-y-xs-4x">
+    <div class="margin-bottom-xs-half">
+      <img src="img/bruno.png" alt="" width="250" height="155" />
+    </div>
+    <div>
+      A <a href="http://gulpjs.com/">Gulp</a>-based boilerplate with baked-in <a href="http://sass-lang.com/">Sass</a> and <a href="https://babeljs.io/">Babel</a> support. <br>View source on <a href="https://github.com/bitmap/bruno">GitHub.</a>
+    </div>
+  </header>
+
+  <section class="padding-y-xs-2x">
+    <h1>Heading 1</h1>
+    <h2>Heading 2</h2>
+    <h3>Heading 3</h3>
+    <h4>Heading 4</h4>
+    <p>
+      Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor
+      in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+    </p>
+  </section>
+
+  <section class="padding-y-xs-2x">
+    <h2>Buttons</h2>
+    <button class="btn">Button</button>
+    <button class="btn btn--primary">Button</button>
+    <button class="btn btn--secondary">Button</button>
+  </section>
+
+  <section class="padding-y-xs-2x">
+    <h2>Forms</h2>
+    <form class="form">
+
+      <label for="text_field">Text Field:</label>
+      <input class="form__control" type="text" />
+
+      <label for="text_area">Text Area:</label>
+      <textarea class="form__control"></textarea>
+
+      <label for="select_element">Select Element:</label>
+      <select class="form__select" name="select_element">
+        <optgroup label="Option Group 1">
+          <option value="1">Option 1</option>
+          <option value="2">Option 2</option>
+          <option value="3">Option 3</option>
+        </optgroup>
+        <optgroup label="Option Group 2">
+          <option value="1">Option 1</option>
+          <option value="2">Option 2</option>
+          <option value="3">Option 3</option>
+        </optgroup>
+      </select>
+
+      <label>Radio Buttons:</label>
+      <label class="form__radio">
+        <input type="radio" name="radio" value="radio_1" />Radio 1</label>
+      <label class="form__radio">
+        <input type="radio" name="radio" value="radio_2" />Radio 2</label>
+      <label class="form__radio">
+        <input type="radio" name="radio" value="radio_3" />Radio 3</label>
+
+
+      <label>Checkboxes:</label>
+      <label class="form__checkbox">
+        <input type="checkbox" value="check_1" />Checkbox 1</label>
+      <label class="form__checkbox">
+        <input type="checkbox" value="check_2" />Checkbox 2</label>
+      <label class="form__checkbox">
+        <input type="checkbox" value="check_3" />Checkbox 3</label>
+
+    </form>
+  </section>
+
+  <section class="padding-y-xs-2x">
+    <h2>Grid</h2>
+    <p>Bruno requires a few classes. The <code>.wrap</code> class wraps all elements. It is horizontally centered and has a max-width. Columns are wrapped in a <code>.row</code> class, and each column requires a <code>.col-</code> class. Use the <code>.col-</code>      classes to span the columns across different breakpoints. The default number of columns is 12. Max-width, column number, and gutter size can be customized in <code>_config.scss</code>.</p>
+
+    <h3>Mobile first</h3>
+    <p>Column widths <strong>start at mobile and scale to desktop</strong>. For example the "md" breakpoint will override the "xs" breakpoint on medium-sized screens.</p>
+
+    <p>Each tier of classes scales up from "xs", meaning if you plan on setting the same widths for "lg" and "md", you only need to specify "md". "lg", "md", and "sm" grids automatically stack at "xs" width.</p>
+  </section>
+
+  <section class="padding-y-xs-2x">
+    <h2>Basic layouts</h2>
+    <h3>Two column</h3>
+    <div class="row">
+      <div class="col-xs-8">.col-xs-8</div>
+      <div class="col-xs-4">.col-xs-4</div>
+    </div>
+
+    <h3>Half and half</h3>
+    <div class="row">
+      <div class="col-xs-6">.col-xs-6</div>
+      <div class="col-xs-6">.col-xs-6</div>
+    </div>
+
+    <h3>Three equal columns</h3>
+    <div class="row">
+      <div class="col-xs-4">.col-xs-4</div>
+      <div class="col-xs-4">.col-xs-4</div>
+      <div class="col-xs-4">.col-xs-4</div>
+    </div>
+
+    <h3>Three unequal columns</h3>
+    <div class="row">
+      <div class="col-xs-3">.col-xs-3</div>
+      <div class="col-xs-6">.col-xs-6</div>
+      <div class="col-xs-3">.col-xs-3</div>
+    </div>
+  </section>
+  <section class="padding-y-xs-2x">
+    <h2>Nesting</h2>
+    <p>Nesting is easy—just put a row of columns within an existing column. On mobile these columns and their nested columns will stack (layout is exagerated in these examples, it won't stack so tall).</p>
+
+    <div class="row">
+      <div class="col-xs-8">
+        [parent] .col-xs-8
+        <div class="row">
+          <div class="col-xs-6">[nested] .col-xs-6</div>
+          <div class="col-xs-6">[nested] .col-xs-6</div>
+        </div>
+      </div>
+      <div class="col-xs-4">[no nested row] .col-xs-4</div>
+    </div>
+  </section>
+  <section class="padding-y-xs-2x">
+    <h2>Mixing breakpoints</h2>
+    <p>The Uno grid system has four tiers of classes: xs (phones), sm (tablets), md (small desktop), and lg (full-width). You can combine these classes to create more flexible layouts.</p>
+
+    <div class="row">
+      <div class="col-xs-12 col-lg-8">.col-xs-12 .col-lg-8</div>
+      <div class="col-xs-6 col-lg-4">.col-xs-6 .col-lg-4</div>
+    </div>
+    <div class="row">
+      <div class="col-xs-4 col-lg-5">.col-xs-4 .col-lg-5</div>
+      <div class="col-xs-4 col-lg-2">.col-xs-4 .col-lg-2</div>
+      <div class="col-xs-4 col-lg-5">.col-xs-4 .col-lg-5</div>
+    </div>
+    <div class="row">
+      <div class="col-xs-6 col-sm-4 col-md-8 col-lg-6">.col-xs-6 col-sm-4 col-md-8 col-lg-6</div>
+      <div class="col-xs-6 col-sm-8 col-md-4 col-lg-6">.col-xs-6 col-sm-8 col-md-4 col-lg-6</div>
+    </div>
+  </section>
+  <section class="padding-y-xs-2x">
+    <h2>Offset</h2>
+    <p>Offset n-columns left and reset at specific breakpoints. Just subtract 1 column from the element you add the offset to, and be considerate of siblings. Offsets larger than "xs" automatically reset at "xs" width.</p>
+    <div class="row">
+      <div class="col-sm-5 col-xs-5 offset-lg-1 offset-sm-1">.col-sm-5 .col-xs-5 .offset-lg-1 .offset-sm-1</div>
+      <div class="col-sm-5 offset-lg-1 col-xs-5 offset-sm-1">.col-sm-5 .col-xs-5 .offset-lg-1 .offset-sm-1</div>
+    </div>
+    <div class="row">
+      <div class="col-sm-5 col-xs-5 offset-lg-1 offset-sm-1">.col-sm-5 .col-xs-5 .offset-lg-1 .offset-sm-1</div>
+      <div class="col-sm-5 col-xs-5 offset-lg-1 offset-sm-1">.col-sm-5 .col-xs-5 .offset-lg-1 .offset-sm-1</div>
+    </div>
+    <div class="row">
+      <div class="col-xs-10 offset-xs-2 col-sm-12 offset-sm-0 col-md-6 offset-md-6 col-lg-6 offset-lg-6">.col-xs-10 .offset-xs-2 .col-sm-12 .offset-sm-0 .col-md-6 .offset-md-6</div>
+    </div>
+  </section>
+  <section class="padding-y-xs-2x">
+    <h2>Push / Pull</h2>
+    <p>By default,
+      <strong>all coulmns are floated left</strong>.However, on some breakpoints you may want an element on the the right and others on the left.</p>
+
+    <p>Using the
+      <code>.push</code> and
+      <code>.pull</code> class reorder you columns.
+      <strong>Be advised</strong>, using this class can have adverse effects on the order of your elements, and weird stuff can happen if you're not careful.</p>
+    <div class="row">
+      <div class="col-xs-8 push-lg-4">[first in DOM] .col-xs-8 .push-lg-4</div>
+      <div class="col-xs-4 pull-lg-8">[second in DOM] .col-xs-4 .pull-lg-4</div>
+    </div>
+
+    <p>Nesting is possible and you can do some really weird stuff.</p>
+    <div class="row">
+      <div class="col-xs-8 push-lg-2">.col-xs-8 .push-lg-2
+        <div class="row">
+          <div class="col-xs-6 pull-xs-1">[nested and pulled] .col-xs-6 .pull-xs-1</div>
+          <div class="col-xs-6 push-xs-1">[nested and pushed] .col-xs-6 .push-xs-1</div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="padding-y-xs-2x">
+    <h2>Flexbox Features</h2>
+    <p>Bruno's grid also supports a range of flexbox features for dynamic layouts.</p>
+    <div class="margin-y-xs-4x">
+      <h3>Auto Columns</h3>
+      <p>simply putting <code>.col-</code> will auto size columns for you.</p>
+      <div class="row">
+        <div class="col-xs">.col-xs</div>
+        <div class="col-xs">.col-xs</div>
+        <div class="col-xs">.col-xs</div>
+        <div class="col-xs">.col-xs</div>
+        <div class="col-xs">.col-xs</div>
+        <div class="col-xs">.col-xs</div>
+      </div>
+    </div>
+
+    <div class="margin-bottom-xs-4x">
+      <h3>Aligning Rows and Columns</h3>
+      <p>Adding these classes to the <code>.row</code> element allows flexbox to work its magic.</p>
+
+      <p> <code>.align-cols-top-</code>, <code>.align-cols-middle</code>, and <code>.align-cols-bottom-</code> refer to the <strong>alignment of all columns</strong> inside the container.</p>
+
+      <p><code>.align-cols-left-</code>, <code>.align-cols-center-</code>, and <code>.align-cols-right-</code> refer to the <em>content</em> inside the columns. It's a bit like <code>text-align</code> but works on blocks.</p>
+
+      <p>
+        They can be mixed and matched in lieu of the push/pull classes to align content.
+      </p>
+
+      <div class="row align-cols-top-xs align-cols-left-xs" style="height: 100px;">
+        <div class="col-xs-3">.top-xs .start-xs</div>
+        <div class="col-xs-3">.top-xs .start-xs</div>
+      </div>
+      <div class="row align-cols-middle-xs align-cols-center-xs" style="height: 100px;">
+        <div class="col-xs-3">.middle-xs .center-xs</div>
+        <div class="col-xs-3">.middle-xs .center-xs</div>
+      </div>
+      <div class="row align-cols-bottom-xs align-cols-right-xs" style="height: 100px;">
+        <div class="col-xs-3">.bottom-xs .end-xs</div>
+        <div class="col-xs-3">.bottom-xs .end-xs</div>
+      </div>
+
+      <p>Adding <code>.align-top-</code>, <code>.align-middle</code>, and <code>.align-bottom-</code> to a <code>.col</code> element applies the alignment individually for more dynamic layouts. <em>These override the alignment class on the parent</em>, so
+        be careful.</p>
+      <div class="row" style="height: 150px;">
+        <div class="col-xs-4 align-top-xs">.top-xs</div>
+        <div class="col-xs-4 align-middle-xs">.middle-xs</div>
+        <div class="col-xs-4 align-bottom-xs">.bottom-xs</div>
+      </div>
+
+    </div>
+
+    <div class="margin-bottom-xs-4x">
+      <h3>Auto-spacing margins</h3>
+
+      <p><code>.space-between-</code> and <code>.space-around-</code> help space out elements by filling the space around or between elements. You apply this to the <code>.row</code>.</p>
+      <div class="row space-between-xs">
+        <div class="col-xs-2">.between-xs</div>
+        <div class="col-xs-2">.between-xs</div>
+        <div class="col-xs-2">.between-xs</div>
+      </div>
+
+      <div class="row space-around-xs">
+        <div class="col-xs-2">.around-xs</div>
+        <div class="col-xs-2">.around-xs</div>
+        <div class="col-xs-2">.around-xs</div>
+      </div>
+    </div>
+
+    <div class="margin-bottom-xs-4x">
+      <h3>Order</h3>
+      <p>By default the <code>order</code> property is <code>0</code>, so elements stack as aexpected. The <code>.order-first-</code> and <code>.order-last-</code> change the order to <code>-1</code> and <code>1</code>, respectively.</p>
+      <div class="row space-between-xs end">
+        <div class="col-xs-3 last-xs">1</div>
+        <div class="col-xs-3">2</div>
+        <div class="col-xs-3 first-xs">3</div>
+      </div>
+    </div>
+
+    <div class="margin-bottom-xs-4x">
+      <h3>Reverse</h3>
+      <p>Reverse the order of the columns by adding <code>.flex--reverse</code> to the <code>.row</code>.</p>
+      <div class="row flex--reverse">
+        <div class="col-xs">1</div>
+        <div class="col-xs">2</div>
+        <div class="col-xs">3</div>
+        <div class="col-xs">4</div>
+        <div class="col-xs">5</div>
+        <div class="col-xs">6</div>
+      </div>
+    </div>
+
+  </section>
+</div>
+
+    <script src="js/scripts.min.js"></script>
+  </body>
+</html>

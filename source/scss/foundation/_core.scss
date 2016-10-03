@@ -1,0 +1,29 @@
+h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, h6, .h6,
+p, ul, ol, pre, table, blockquote {
+  margin-top: 0;
+  margin-bottom: $base-spacing;
+}
+
+p {}
+
+ul, ol {}
+
+a {
+  color: $color-link;
+  text-decoration: none;
+}
+a:hover {
+  text-decoration: underline;
+}
+
+p > a {
+  text-decoration: underline;
+}
+
+strong, b {
+  font-weight: 600;
+}
+
+i, em {}
+
+hr {}

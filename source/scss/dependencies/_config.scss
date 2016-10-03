@@ -1,0 +1,53 @@
+/*
+  Global variables
+*/
+
+// Brand colors
+$color-primary: #27262B;
+$color-secondary: #D8D8D8;
+
+// GRAYS
+$color-light-gray: #efefef;
+$color-gray: #cccccc;
+$color-dark-gray: #D8D8D8;
+
+// Other colors
+$color-black: #27262B;
+$color-link: $color-primary;
+$color-link-hover: $color-primary;
+
+// Backgrounds
+.gray-bg {
+  background: $color-dark-gray;
+}
+
+.dark-bg {
+  background: $color-black;
+  h1,h2,h3,h4,h5,p,a, ul,li {
+    color: white;
+  }
+}
+
+// Base margin & padding
+$base-spacing: 0px;
+
+// Grid settings
+$grid-breakpoints: (
+  xs: 0,
+  sm: 544px,
+  md: 768px,
+  lg: 992px,
+  xl: 1200px,
+  xxl: 1600px
+) !default;
+
+$grid-columns: 12;
+$grid-max-width: 100%;
+$grid-gutter-width: $base-spacing;
+
+// Used for looping
+$breakpoints: map_keys($grid-breakpoints) !default;
+
+// Line-heigt
+$body-line-height: 1.375;
+$header-line-height: 1.1;

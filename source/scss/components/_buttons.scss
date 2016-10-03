@@ -1,33 +1,32 @@
 @mixin btn-color($color) {
-  background-color: $color;
-  color: #fff;
+  border-color: $color;
+  color: $color;
   &:hover,
   &:focus {
-    background-color: mix($color, #fff, 60%);
+    border-color: mix($color, #ffffff, 75%);
   }
 }
 
 .btn {
-  @include btn-color($color-black);
-  @include h4-font();
-  line-height: 1;
-  border: none;
-  padding: 0.66em 1.32em;
-  white-space: nowrap;
-  vertical-align: middle;
-  cursor: pointer;
-  user-select: none;
-  border-radius: 0;
   display: inline-block;  // <a>
   text-align: center;     // <a>
   text-decoration: none;  // <a>
+  cursor: pointer;        // <a>
+  background: transparent;
+  border: 1px solid;
+  border-radius: 3px;
+  padding: 0.66em 1.38em;
+  white-space: nowrap;
+  vertical-align: middle;
+  user-select: none;
+  @include btn-color($color-black);
 }
 
-.btn-primary {
+.btn--primary {
   @include btn-color($color-primary);
 }
 
-.btn-secondary {
+.btn--secondary {
   @include btn-color($color-secondary);
 }
 

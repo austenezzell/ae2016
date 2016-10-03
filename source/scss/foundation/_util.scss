@@ -1,4 +1,6 @@
-// Utility classes
+/*
+  Utility classes
+*/
 
 // Lists
 .list-reset {
@@ -15,14 +17,15 @@
 @mixin box-spacing($value) {
   $box-sides: ( top: top, bottom: bottom, left: left, right: right );
 
-  // '$n' is the number of classes you want to generate * '$i'
-  $n: 4;
+  // $sizes is the number of classes you want to generate
+  // example: setting this to 4 will generate 1x, 2x, 3x, and 4x sizes
+  $sizes: 4;
 
   // see _variables.scss for breakpoint definitions
   @each $breakpoint in $breakpoints {
     @include breakpoint($breakpoint) {
 
-      @for $i from 1 through $n {
+      @for $i from 1 through $sizes {
         .margin-#{$breakpoint}-#{$i}x {
           margin: $value * $i;
         }
@@ -43,7 +46,7 @@
           padding-#{$sides}: $value / 2;
         }
 
-        @for $i from 1 through $n {
+        @for $i from 1 through $sizes {
           .margin-#{$side}-#{$breakpoint}-#{$i}x {
             margin-#{$sides}: $value * $i;
           }
@@ -55,6 +58,10 @@
 
         .margin-#{$side}-#{$breakpoint}-0 {
           margin-#{$sides}: 0;
+        }
+
+        .margin-#{$side}-#{$breakpoint}-auto {
+          margin-#{$sides}: auto;
         }
       }
 
@@ -78,7 +85,7 @@
         padding-right: $value / 2;
       }
 
-      @for $i from 1 through $n {
+      @for $i from 1 through $sizes {
         .margin-y-#{$breakpoint}-#{$i}x {
           margin-top: $value * $i;
           margin-bottom: $value * $i;
@@ -122,7 +129,6 @@
     }
   }
 }
-
 @include box-spacing($base-spacing);
 
 @each $breakpoint in $breakpoints {
@@ -240,7 +246,7 @@
   background-color: $color-secondary;
 }
 
-// viewport
+// Viewport Height
 .vh-full {
   height: 100vh;
 }
@@ -255,17 +261,36 @@
 
 // Clearfix
 .clearfix {
-  @extend %clearfix;
+  &:before {
+    content: " ";
+    display: table;
+  }
+  &:after {
+    content: " ";
+    display: table;
+    clear: both;
+  }
+}
+
+// Hide visually
+.visually-hidden {
+  position: absolute !important;
+  overflow: hidden;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  border: 0;
+  clip: rect(1px, 1px, 1px, 1px);
 }
 
 .showgrid {
   .row {
-    background-color: rgba($cinco-blue, 0.05);
+    background-color: rgba($color-secondary, 0.05);
   }
-  .col {
-    background-color: rgba($cinco-blue, 0.2);
+  [class*="col-"] {
+    background-color: rgba($color-secondary, 0.2);
   }
-  .col + .col:nth-child(even) {
-    background-color: rgba($cinco-blue, 0.1);
+  [class*="col-"] + [class*="col-"]:nth-child(even) {
+    background-color: rgba($color-secondary, 0.1);
   }
 }

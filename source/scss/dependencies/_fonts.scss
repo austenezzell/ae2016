@@ -1,5 +1,10 @@
+/*
+  Font settings
+  - SVG fonts need #font_id from <font> tag
+*/
+
 @font-face {
-  font-family: 'mark-pro-regular';
+  font-family: 'mark-pro';
   src: url('/fonts/mark-pro/markPro.eot');
   src: url('/fonts/mark-pro/markPro.eot?#iefix') format('embedded-opentype'),
        url('/fonts/mark-pro/markPro.woff') format('woff'),
@@ -20,7 +25,7 @@
 
 @font-face {
   font-family: 'mark-pro-medium';
-  src: url('/fonts/mark-pro/markPro-Medium.eot');
+  src: url('/fonts/mark-pro/MarkPro-Medium.eot');
   src: url('/fonts/mark-pro/markPro-Medium.eot?#iefix') format('embedded-opentype'),
        url('/fonts/mark-pro/markPro-Medium.woff') format('woff'),
        url('/fonts/mark-pro/markPro-Medium.ttf') format('truetype');
@@ -38,33 +43,32 @@
   font-style: normal;
 }
 
-
-@mixin small-font() {
-  @include font-size($small-font-size);
-  line-height: $body-line-height;
+@font-face {
+  font-family: 'nantes-regular';
+  src: url('/fonts/nantes/nantes-regular.woff') format('woff'),
+       url('/fonts/nantes/nantes-regular.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
 }
 
-@mixin body-font() {
-  @include font-size($body-font-size);
-  line-height: $body-line-height;
+@mixin font() {
+  font-family: "mark-pro", sans-serif;
+  font-style: normal;
+  font-weight: 400;
 }
 
-@mixin h4-font {
-  @include font-size($h4-font-size);
-  line-height: $body-line-height;
+@mixin regular-font() {
+  font-family: "mark-pro", sans-serif;
+  font-style: normal;
+  font-weight: 400;
 }
 
-@mixin h3-font {
-  @include font-size($h3-font-size);
-  line-height: $header-line-height;
+@mixin bold-font() {
+  font-family: "mark-pro-medium", sans-serif;
+  font-style: normal;
+  font-weight: 700;
 }
 
-@mixin h2-font {
-  @include font-size($h2-font-size);
-  line-height: $header-line-height;
-}
-
-@mixin h1-font {
-  @include font-size($h1-font-size);
-  line-height: $header-line-height;
+@mixin alt-font() {
+  font-family: 'Lora', serif;
 }

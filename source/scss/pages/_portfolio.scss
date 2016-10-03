@@ -1,0 +1,104 @@
+/*
+  portfolio styles
+*/
+// PORTFOLIO
+
+.portfolio-page {
+  .portfolio-item {
+    cursor: pointer;
+  }
+}
+
+.portfolio-description {
+  padding: 30px;
+  min-height: 100vh;
+  a {
+    @include alt-font;
+  }
+
+}
+
+.project-title, .about-intro, .home-intro {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: $color-black;
+  z-index: 3;
+  color: white;
+  pointer-events: none;
+  animation-fill-mode: forwards;
+  animation-delay: 2s;
+  animation-duration: 1s;
+  animation-name: fadeOut;
+  padding: 0px 30px;
+  h2 {
+    opacity: 0;
+    transform: translateX(-50px);
+    animation-fill-mode: forwards;
+    animation-delay: .5s;
+    animation-duration: 1.5s;
+    animation-name: fadeInOut;
+  }
+}
+
+.portfolio {
+  opacity: 1;
+  transition: opacity .4;
+  line-height: 0;
+  img, video {
+    width: 100%;
+    height: auto;
+    opacity: 1;
+    transition: opacity .4;
+    @include breakpoint(sm) {
+      padding: 0;
+    }
+    @include breakpoint(md) {
+      padding: 0;
+    }
+  }
+  .transition-fadeout {
+    opacity: 1;
+    transition: opacity .4;
+  }
+
+  .portfolio-section {
+    background: white;
+    overflow: hidden;
+    display: block;
+    @include breakpoint(md) {
+      background: transparent;
+    }
+  }
+
+
+    // Image DTL OVERLAY
+    .overlay {
+      transform: translateX(-100vw);
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: white;
+      z-index: 3;
+      transition: all .6s;
+      visibility: hidden;
+      opacity: 0;
+      h6 {
+        position: absolute;
+        bottom: 40px;
+        right: 40px;
+        text-orientation: sideways-right;
+        writing-mode: vertical-rl;
+        margin: 0;
+      }
+    }
+    .overlay.active-overlay  {
+      visibility: visible;
+      opacity: 1;
+      transform: translateX(0vw);
+    }
+  }

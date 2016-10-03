@@ -1,3 +1,7 @@
+/*
+  Reusable bits of code
+*/
+
 @mixin breakpoint($class) {
   // 'xs' (< 544px) is default
 
@@ -38,7 +42,7 @@
 @mixin font-size($map, $breakpoints: $grid-breakpoints) {
   @each $breakpoint, $font-size in $map {
     @if $breakpoint == default {
-      font-size: ($font-size / 10) + rem;
+      font-size: ($font-size) + px;
     }
     @else {
       // If $font-size is a key that exists in
@@ -47,7 +51,7 @@
         $breakpoint: map-get($breakpoints, $breakpoint);
       }
       @media screen and (min-width: $breakpoint) {
-        font-size: ($font-size / 10) + rem;
+        font-size: ($font-size) + px;
       }
     }
   }
@@ -57,97 +61,11 @@
   @if length($ratio) < 2 or length($ratio) > 2 {
     @warn "$ratio must be a list with two values.";
   }
+
   $width: 100%;
   $height: percentage(nth($ratio, 2) / nth($ratio, 1));
+
   width: $width;
   height: 0;
   padding-bottom: $height;
-}
-
-@mixin regular-font() {
-  font-family: "mark-pro-regular", sans-serif;
-  font-style: normal;
-  font-weight: 400;
-}
-
-@mixin bold-font() {
-  font-family: "mark-pro-bold", sans-serif;
-  font-style: normal;
-  font-weight: 500;
-}
-
-// Extends
-%hide-text {
-  text-indent: -99999px;
-  direction: ltr;
-}
-
-%visually-hidden {
-  position: absolute !important;
-  overflow: hidden;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  border: 0;
-  clip: rect(1px, 1px, 1px, 1px);
-}
-
-%clearfix {
-  *zoom: 1;
-  &:before {
-    content: " ";
-    display: table;
-  }
-  &:after {
-    content: " ";
-    display: table;
-    clear: both;
-  }
-}
-
-// Prefer 'margin: auto' in a flex container
-%vertical-align {
-  position: relative;
-  top: 50%;
-  transform: translateY(-50%);
-}
-
-.difference {
-  mix-blend-mode: difference;
-}
-
-.copy-module {
-  padding: 30px;
-}
-
-
-@mixin aspect-ratio($width, $height) {
-  position: relative;
-  &:before {
-    display: block;
-    content: "";
-    width: 100%;
-    padding-top: ($height / $width) * 100%;
-  }
-  > .content {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-  }
-}
-
-.cover {
-    background-position: cover;
-}
-
-.ratio-sixteen-nine {
-  @include aspect-ratio(16, 9);
-}
-.ratio-four-six {
-  @include aspect-ratio(4, 6);
-}
-.ratio-six-four {
-  @include aspect-ratio(6, 4);
 }

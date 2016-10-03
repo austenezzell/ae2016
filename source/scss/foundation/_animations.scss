@@ -1,0 +1,148 @@
+/*
+  Place your animation classes in here.
+*/
+
+
+// Portfolio intro
+.about-intro {
+  background: $color-gray;
+  color: black;
+}
+
+#portfolio-transition {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background: $color-black;
+  transform: translateX(-100%);
+  transition: transform .4s;
+  .transitional-bg-img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    opacity: 1;
+    background-size: cover;
+    background-position: center;
+  }
+  img, video {
+    width: 100%;
+    height: auto;
+  }
+}
+.active .overlay-container {
+  opacity: 0;
+  animation-fill-mode: forwards;
+  animation-duration: 2s;
+  animation-name: portfolioImageTransition;
+}
+body.home-transitioning {
+  background-color: white;
+  transition: background-color .4s;
+  .description, .logo, .cursor-follow {
+    opacity: 0;
+  }
+  .transition-fadeout, .portfolio img, .portfolio video {
+    opacity: 0;
+  }
+}
+body.screen-transitioning {
+  background-color: $color-black;
+  transition: background-color .4s;
+  .description, .logo {
+    opacity: 0;
+  }
+  .transition-fadeout, .portfolio img, .portfolio video {
+    opacity: 0;
+  }
+  #portfolio-transition {
+    transform: translateX(0);
+    .transitional-bg-img {
+      animation-fill-mode: forwards;
+      animation-delay: 1.8s;
+      animation-duration: .4s;
+      animation-name: fadeOut;
+    }
+  }
+}
+body.about-transitioning {
+  background-color: $color-gray;
+  .description, .logo {
+    opacity: 0;
+  }
+  .transition-fadeout, .portfolio img, .portfolio video {
+    opacity: 0;
+  }
+  #about-transition {
+    transform: translateX(0%);
+  }
+}
+
+@keyframes aboutFadeInOut {
+  0% {
+    opacity: 0;
+    transform: translateX(50px);
+  }
+  20% {
+    opacity: 1;
+    transform: translateX(0px);
+  }
+  80% {
+    opacity: 1;
+    transform: translateX(0px);
+  }
+  100% {
+    opacity: 0;
+    transform: translateX(0px);
+  }
+}
+
+@keyframes fadeInOut {
+  0% {
+    opacity: 0;
+    transform: translateX(-50px);
+  }
+  20% {
+    opacity: 1;
+    transform: translateX(0px);
+  }
+  80% {
+    opacity: 1;
+    transform: translateX(0px);
+  }
+  100% {
+    opacity: 0;
+    transform: translateX(0px);
+  }
+}
+
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+@keyframes portfolioImageTransition {
+  0% {
+    opacity: 0;
+    transform: translateX(-50vw);
+  }
+  20% {
+    opacity: 1;
+    transform: translateX(0px);
+  }
+  80% {
+    opacity: 1;
+    transform: translateX(0px);
+  }
+  100% {
+    opacity: 0;
+    transform: translateX(0px);
+  }
+}
