@@ -1,9 +1,4 @@
-<img src="./source/img/bruno.png" width="300"/>
+#austenezzell.com
 
-aka Cabestrap. For making internet.
-
-```
-$ npm i
-$ npm run bruno
-```
-A work in progress.
+My 2016 portfolio built off of Bruno.
+Thanks to [Cabe Branson](https://github.com/bitmap) for the framework.
