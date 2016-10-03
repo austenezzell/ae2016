@@ -54,25 +54,19 @@
     imgOverlay = false;
   };
 
-  // preload nav image
-  const preloadImage = (url) => {
-    const img = new Image();
-    img.src = url;
-  };
-
   let lastKnownScrollPosition = 0;
   let ticking = false;
   const description = document.querySelector('.description');
 
   let newOpacity;
   let opacityNumber;
-  let newBottom;
 
   function doSomething(scrollPos) {
-    newOpacity = 1 - (scrollPos * 0.01);
-    opacityNumber = Math.max(newOpacity.toFixed(2), 0);
-    newBottom = scrollPos + 30;
-    description.setAttribute('style', `opacity: ${opacityNumber}; bottom: ${newBottom}px;`);
+    if (homePage) {
+      newOpacity = 1 - (scrollPos * 0.01);
+      opacityNumber = Math.max(newOpacity.toFixed(2), 0);
+      description.setAttribute('style', `opacity: ${opacityNumber};`);
+    }
   }
 
   window.addEventListener('scroll', () => {
@@ -145,15 +139,17 @@
         link.rel = 'prerender';
         addClass(body, 'screen-transitioning');
         addClass(portfolioTransition, 'active');
-        transitionalBgImg.setAttribute('style', `background-image: url(${preloadTransitionImage});`);
+        transitionalBgImg.setAttribute('style',
+          `background-image: url(${preloadTransitionImage});`
+        );
         window.setTimeout(() => { window.location = selectHref; }, 2200);
       }, false);
     });
   };
 
-  const aboutPageTransition = (aboutLink) => {
+  const aboutPageTransition = (aboutEl) => {
     Array.prototype.forEach.call(aboutLink, (el, i) => {
-      aboutLink[i].addEventListener('click', (e) => {
+      aboutEl[i].addEventListener('click', (e) => {
         e.preventDefault();
         selectHref = el.getAttribute('href');
         addClass(body, 'screen-transitioning');
@@ -193,18 +189,19 @@
   // customize about page to someone
   const getParameterByName = (name, url) => {
     if (!url) {
-      url = window.location.href;
-      name = name.replace(/[\[\]]/g, `\\$&`);
-      const regex = new RegExp(`[?&]${name}(=([^&#]*)|&|#|$)`),
-      results = regex.exec(url);
+      const currentURL = window.location.href;
+      const target = name.replace(/[\[\]]/g, '\\$&');
+      const regex = new RegExp(`[?&]${target}(=([^&#]*)|&|#|$)`),
+        results = regex.exec(currentURL);
       if (!results) {
         return null;
       }
       if (!results[2]) {
         return '';
       }
-      return decodeURIComponent(results[2].replace(/\+/g, " "));
+      return decodeURIComponent(results[2].replace(/\+/g, ' '));
     }
+    return null;
   };
 
   // current page nav
@@ -214,9 +211,9 @@
       addClass(activeNav, 'current');
     }
     if (currentPage === 'home') {
-      const name = getParameterByName('to');
-      if (name) {
-        customIntro.innerHTML = `Hi, ${name}`;
+      const target = getParameterByName('to');
+      if (target) {
+        customIntro.innerHTML = `Hi, ${target}`;
       }
     }
   };

@@ -33,16 +33,12 @@ header .fixed-header {
    }
 }
 .description {
- bottom: 30px;
- left: 30px;
+  position: absolute;
+  bottom: 30px;
+  left: 30px;
 }
 .about-page, .portfolio-page {
- .description, .logo {
+ .logo {
    display: none;
  }
-}
-.designer-dev {
-  .about-link {
-
-  }
 }
