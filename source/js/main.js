@@ -27,29 +27,11 @@
   let title;
   let imgOverlay = false;
 
-  // REMOVE CLASS
-  const removeClass = (el, className) => {
-    if (el.classList) {
-      el.classList.remove(className);
-    } else {
-      el.className += ` ${className}`;
-    }
-  };
-
-  // ADD CLASS
-  const addClass = (el, className) => {
-    if (el.classList) {
-      el.classList.add(className);
-    } else {
-      el.className += ` ${className}`;
-    }
-  };
-
   // close overlay
   const closeOverlay = () => {
     while (overlayContainer.firstChild) {
       overlayContainer.removeChild(overlayContainer.firstChild);
-      removeClass(overlay, 'active-overlay');
+      overlay.classList.remove('active-overlay');
     }
     imgOverlay = false;
   };
@@ -61,7 +43,7 @@
   let newOpacity;
   let opacityNumber;
 
-  function doSomething(scrollPos) {
+  function fadeOutDescription(scrollPos) {
     if (homePage) {
       newOpacity = 1 - (scrollPos * 0.01);
       opacityNumber = Math.max(newOpacity.toFixed(2), 0);
@@ -79,7 +61,7 @@
     lastKnownScrollPosition = window.scrollY;
     if (!ticking) {
       window.requestAnimationFrame(() => {
-        doSomething(lastKnownScrollPosition);
+        fadeOutDescription(lastKnownScrollPosition);
         ticking = false;
       });
     }
@@ -92,7 +74,7 @@
       selectedPortfolioItem[i].addEventListener('click', () => {
         const clone = el.cloneNode();
         overlayContainer.appendChild(clone);
-        addClass(overlay, 'active-overlay');
+        overlay.classList.add('active-overlay');
         title = el.getAttribute('title');
         imgTitle.innerHTML = title;
         imgOverlay = true;
@@ -115,8 +97,8 @@
         selectedItem = el.querySelector('.select');
         selectBg = selectedItem.getAttribute('src');
         selectHref = el.getAttribute('href');
-        addClass(body, 'screen-transitioning');
-        addClass(portfolioTransition, 'active');
+        body.classList.add('screen-transitioning');
+        portfolioTransition.classList.add('active');
         transitionalBgImg.setAttribute('style', `background-image: url(${selectBg});`);
         const link = document.createElement('link');
         link.href = selectHref;
@@ -137,8 +119,8 @@
         const preloadTransitionImage = el.getAttribute('data-transitionImg');
         link.href = selectHref;
         link.rel = 'prerender';
-        addClass(body, 'screen-transitioning');
-        addClass(portfolioTransition, 'active');
+        body.classList.add('screen-transitioning');
+        portfolioTransition.classList.add('active');
         transitionalBgImg.setAttribute('style',
           `background-image: url(${preloadTransitionImage});`
         );
@@ -152,8 +134,8 @@
       aboutEl[i].addEventListener('click', (e) => {
         e.preventDefault();
         selectHref = el.getAttribute('href');
-        addClass(body, 'screen-transitioning');
-        addClass(portfolioTransition, 'active');
+        body.classList.add('screen-transitioning');
+        portfolioTransition.classList.add('active');
         portfolioTransition.setAttribute('style', 'background: #cccccc');
         transitionalBgImg.setAttribute('style', 'background-image: url(/img/worldsgame/19.jpg);');
         window.setTimeout(() => { window.location = selectHref; }, 2200);
@@ -167,11 +149,11 @@
       Array.prototype.forEach.call(portfolioSection, (el, i) => {
         portfolioSection[i].addEventListener('mouseover', () => {
           const activeCursor = el.querySelector('.cursor-follow');
-          addClass(activeCursor, 'active');
+          activeCursor.classList.add('active');
         });
         portfolioSection[i].addEventListener('mouseout', () => {
           const activeCursor = el.querySelector('.cursor-follow');
-          removeClass(activeCursor, 'active');
+          activeCursor.classList.remove('active');
         });
       });
     }
@@ -208,7 +190,7 @@
   const checkCurrentPage = () => {
     if (currentPage !== 'home') {
       const activeNav = document.querySelector(`.nav-${currentPage}`);
-      addClass(activeNav, 'current');
+      activeNav.classList.add('current');
     }
     if (currentPage === 'home') {
       const target = getParameterByName('to');
