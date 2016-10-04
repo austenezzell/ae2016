@@ -3,70 +3,73 @@
   - SVG fonts need #font_id from <font> tag
 */
 
-@font-face {
-  font-family: 'mark-pro';
-  src: url('/fonts/mark-pro/markPro.eot');
-  src: url('/fonts/mark-pro/markPro.eot?#iefix') format('embedded-opentype'),
-       url('/fonts/mark-pro/markPro.woff') format('woff'),
-       url('/fonts/mark-pro/markPro.ttf') format('truetype');
-  font-weight: normal;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: 'mark-pro-bold';
-  src: url('/fonts/mark-pro/markPro-Bold.eot');
-  src: url('/fonts/mark-pro/markPro-Bold.eot?#iefix') format('embedded-opentype'),
-       url('/fonts/mark-pro/markPro-Bold.woff') format('woff'),
-       url('/fonts/mark-pro/markPro-Bold.ttf') format('truetype');
-  font-weight: normal;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: 'mark-pro-medium';
-  src: url('/fonts/mark-pro/MarkPro-Medium.eot');
-  src: url('/fonts/mark-pro/markPro-Medium.eot?#iefix') format('embedded-opentype'),
-       url('/fonts/mark-pro/markPro-Medium.woff') format('woff'),
-       url('/fonts/mark-pro/markPro-Medium.ttf') format('truetype');
-  font-weight: normal;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: 'mark-pro-light';
-  src: url('/fonts/mark-pro/markPro-Light.eot');
-  src: url('/fonts/mark-pro/markPro-Light.eot?#iefix') format('embedded-opentype'),
-       url('/fonts/mark-pro/markPro-Light.woff') format('woff'),
-       url('/fonts/mark-pro/markPro-Light.ttf') format('truetype');
-  font-weight: normal;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: 'nantes-regular';
-  src: url('/fonts/nantes/nantes-regular.woff') format('woff'),
-       url('/fonts/nantes/nantes-regular.woff2') format('woff2');
-  font-weight: normal;
-  font-style: normal;
-}
+// @font-face {
+//   font-family: 'mark-pro';
+//   src: url('/fonts/mark-pro/markPro.eot');
+//   src: url('/fonts/mark-pro/markPro.eot?#iefix') format('embedded-opentype'),
+//        url('/fonts/mark-pro/markPro.woff') format('woff'),
+//        url('/fonts/mark-pro/markPro.ttf') format('truetype');
+//   font-weight: normal;
+//   font-style: normal;
+// }
+//
+// @font-face {
+//   font-family: 'mark-pro-bold';
+//   src: url('/fonts/mark-pro/markPro-Bold.eot');
+//   src: url('/fonts/mark-pro/markPro-Bold.eot?#iefix') format('embedded-opentype'),
+//        url('/fonts/mark-pro/markPro-Bold.woff') format('woff'),
+//        url('/fonts/mark-pro/markPro-Bold.ttf') format('truetype');
+//   font-weight: normal;
+//   font-style: normal;
+// }
+//
+// @font-face {
+//   font-family: 'mark-pro-medium';
+//   src: url('/fonts/mark-pro/MarkPro-Medium.eot');
+//   src: url('/fonts/mark-pro/markPro-Medium.eot?#iefix') format('embedded-opentype'),
+//        url('/fonts/mark-pro/markPro-Medium.woff') format('woff'),
+//        url('/fonts/mark-pro/markPro-Medium.ttf') format('truetype');
+//   font-weight: normal;
+//   font-style: normal;
+// }
+//
+// @font-face {
+//   font-family: 'mark-pro-light';
+//   src: url('/fonts/mark-pro/markPro-Light.eot');
+//   src: url('/fonts/mark-pro/markPro-Light.eot?#iefix') format('embedded-opentype'),
+//        url('/fonts/mark-pro/markPro-Light.woff') format('woff'),
+//        url('/fonts/mark-pro/markPro-Light.ttf') format('truetype');
+//   font-weight: normal;
+//   font-style: normal;
+// }
+//
+// @font-face {
+//   font-family: 'nantes-regular';
+//   src: url('/fonts/nantes/nantes-regular.woff') format('woff'),
+//        url('/fonts/nantes/nantes-regular.woff2') format('woff2');
+//   font-weight: normal;
+//   font-style: normal;
+// }
 
 @mixin font() {
-  font-family: "mark-pro", sans-serif;
+  // font-family: "mark-pro", sans-serif;
+  font-family: 'Work Sans', sans-serif;
   font-style: normal;
   font-weight: 400;
 }
 
 @mixin regular-font() {
-  font-family: "mark-pro", sans-serif;
+  // font-family: "mark-pro", sans-serif;
+  font-family: 'Work Sans', sans-serif;
   font-style: normal;
   font-weight: 400;
 }
 
 @mixin bold-font() {
-  font-family: "mark-pro-medium", sans-serif;
+  // font-family: "mark-pro-medium", sans-serif;
+  font-family: 'Work Sans', sans-serif;
   font-style: normal;
-  font-weight: 700;
+  font-weight: 500;
 }
 
 @mixin alt-font() {
