@@ -19,7 +19,12 @@ body {
   padding: 0;
   overflow-x: hidden;
   background-color: white;
+  cursor: url('/img/cursor-default.png') 6 0,auto;
+  a {
+    cursor: url('/img/cursor-pointer.png') 31 23,auto;
+  }
 }
+
 
 img, video {
   width: 100%;

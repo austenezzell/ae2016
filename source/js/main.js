@@ -45,7 +45,7 @@
 
   function fadeOutDescription(scrollPos) {
     if (homePage) {
-      newOpacity = 1 - (scrollPos * 0.01);
+      newOpacity = 1 - (scrollPos * 0.003);
       opacityNumber = Math.max(newOpacity.toFixed(2), 0);
       description.setAttribute('style', `opacity: ${opacityNumber};`);
     }
