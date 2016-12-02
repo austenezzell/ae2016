@@ -36,7 +36,7 @@
 .active .overlay-container {
   opacity: 0;
   animation-fill-mode: forwards;
-  animation-duration: 2s;
+  animation-duration: .9s;
   animation-name: portfolioImageTransition;
 }
 body.home-transitioning {
@@ -62,7 +62,7 @@ body.screen-transitioning {
     transform: translateX(0);
     .transitional-bg-img {
       animation-fill-mode: forwards;
-      animation-delay: 1.8s;
+      animation-delay: .9s;
       animation-duration: .4s;
       animation-name: fadeOut;
     }
@@ -90,7 +90,7 @@ body.about-transitioning {
     opacity: 1;
     transform: translateX(0px);
   }
-  80% {
+  70% {
     opacity: 1;
     transform: translateX(0px);
   }
@@ -137,7 +137,7 @@ body.about-transitioning {
     opacity: 1;
     transform: translateX(0px);
   }
-  80% {
+  70% {
     opacity: 1;
     transform: translateX(0px);
   }

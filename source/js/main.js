@@ -105,7 +105,7 @@
         link.rel = 'dns-prefetch';
 
         document.getElementsByTagName('head')[0].appendChild(link);
-        window.setTimeout(() => { window.location = selectHref; }, 2200);
+        window.setTimeout(() => { window.location = selectHref; }, 1400);
       }, false);
     });
   };

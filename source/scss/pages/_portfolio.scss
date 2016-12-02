@@ -29,7 +29,7 @@
   color: white;
   pointer-events: none;
   animation-fill-mode: forwards;
-  animation-delay: 2s;
+  animation-delay: 1.7s;
   animation-duration: 1s;
   animation-name: fadeOut;
   padding: 0px 30px;
@@ -37,7 +37,7 @@
     opacity: 0;
     transform: translateX(-50px);
     animation-fill-mode: forwards;
-    animation-delay: .5s;
+    animation-delay: .2s;
     animation-duration: 1.5s;
     animation-name: fadeInOut;
     @include regular-font;
