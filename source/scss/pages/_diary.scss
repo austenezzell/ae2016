@@ -1,0 +1,32 @@
+/*
+  Diary styles
+*/
+
+.diary-page {
+  .logo {
+    display: none;
+  }
+  .description {
+    z-index: 999;
+  }
+}
+
+
+.slide {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+  cursor: url('/img/cursor-pointer.png') 31 23,auto;
+  &.off {
+    display: none;
+  }
+}
+
+.slide-title {
+  opacity: 0;
+  &.active {
+    opacity: 1;
+  }
+}

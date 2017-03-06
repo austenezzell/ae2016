@@ -6,6 +6,8 @@
 // import inView from 'in-view';
 
 (() => {
+  const diaryPostDate = [ '02-27-17', '02-23-17' ]
+
   const overlayContainer = document.querySelector('.overlay-container');
   const overlay = document.querySelector('.overlay');
   const imgTitle = document.querySelector('.img-title');
@@ -20,12 +22,106 @@
   const portfolioSection = document.querySelectorAll('.portfolio-section');
   const homePage = document.querySelector('.home-page');
   const customIntro = document.querySelector('.custom-intro');
+  const slide = document.querySelectorAll('.slide');
+  const slideContent = document.querySelectorAll('.slide-content');
+  const currentSlideTitle = document.querySelector('.slide-title');
+  const diary = document.getElementById('page-diary');
+  const diaryPosts = document.getElementById('diary-posts');
 
   let selectedItem;
   let selectBg;
   let selectHref;
   let title;
   let imgOverlay = false;
+
+  // Diary Posts
+  if (currentPage == 'diary') {
+    let slideNumber = 0;
+    let nextSlideUrl;
+    let nextSlide = () => {
+      if (slideNumber < diaryPostDate.length) {
+        let nextSlideUrl = `/diary/${diaryPostDate[slideNumber]}.html`;
+        slideNumber ++;
+        return nextSlideUrl;
+      } else {
+        slideNumber = 0;
+        let nextSlideUrl = `/diary/${diaryPostDate[0]}.html`;
+        slideNumber ++;
+        return nextSlideUrl;
+      }
+    };
+
+    diaryPosts.addEventListener('click', () => {
+      request.open('Get', nextSlide());
+      request.send();
+    });
+
+    // create new post
+    let createPost = (content) => {
+      let newcontent = document.createElement('div');
+      newcontent.className = 'slides';
+      newcontent.innerHTML = content;
+      // newcontent.onmouseover = showDetails;
+      // newcontent.onmouseout = hideDetails;
+      diaryPosts.appendChild(newcontent);
+    };
+
+    // set up a request
+    var request = new XMLHttpRequest();
+
+
+    var showDetails = () => {
+      let slideContent = document.querySelectorAll('.slide-content');
+      console.log(slideContent[0]);
+      let slideDate = slideContent[0].getAttribute('data-date');
+      let slideTitle = slideContent[0].getAttribute('data-title');
+      currentSlideTitle.innerHTML = `<span>${slideTitle}</span><br> ${slideDate}`;
+      currentSlideTitle.classList.add('active');
+    };
+
+    var hideDetails = () => {
+      // console.log('out');
+      currentSlideTitle.classList.remove('active');
+    };
+
+    // keep track of the request
+    request.onreadystatechange = function() {
+      // check if the response data send back to us
+      if(request.readyState === 4) {
+        if(request.status === 200) {
+          // update the HTML of the element
+          createPost(request.responseText);
+        } else {
+          // otherwise display an error message
+          diaryPosts.innerHTML = 'An error occurred during your request: ' +  request.status + ' ' + request.statusText;
+        }
+      }
+    }
+
+    // make initial request
+    request.open('Get', nextSlide());
+    request.send();
+
+    // Array.prototype.forEach.call(slideContent, (el, i) => {
+    //   slideContent[i].addEventListener('mouseover', () => {
+    //     let slideDate = slideContent[i].getAttribute('data-date');
+    //     let slideTitle = slideContent[i].getAttribute('data-title');
+    //     currentSlideTitle.innerHTML = `<span>${slideTitle}</span><br> ${slideDate}`;
+    //     currentSlideTitle.classList.add('active');
+    //   });
+    //   slideContent[i].addEventListener('mouseout', () => {
+    //     currentSlideTitle.classList.remove('active');
+    //   });
+    // });
+  };
+
+  // const showDetails = (i) => {
+  //   console.log('details');
+  //   let slideDate = slideContent[i].getAttribute('data-date');
+  //   let slideTitle = slideContent[i].getAttribute('data-title');
+  //   currentSlideTitle.innerHTML = `<span>${slideTitle}</span><br> ${slideDate}`;
+  //   currentSlideTitle.classList.add('active');
+  // };
 
   // close overlay
   const closeOverlay = () => {
@@ -188,10 +284,11 @@
 
   // current page nav
   const checkCurrentPage = () => {
-    if (currentPage !== 'home') {
+    if (currentPage !== 'diary' && currentPage !== 'home') {
       const activeNav = document.querySelector(`.nav-${currentPage}`);
       activeNav.classList.add('current');
     }
+
     if (currentPage === 'home') {
       const target = getParameterByName('to');
       if (target) {
