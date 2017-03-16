@@ -6,7 +6,6 @@
 // import inView from 'in-view';
 
 (() => {
-  const diaryPostDate = [ '02-27-17', '02-23-17' ]
 
   const overlayContainer = document.querySelector('.overlay-container');
   const overlay = document.querySelector('.overlay');
@@ -27,6 +26,8 @@
   const currentSlideTitle = document.querySelector('.slide-title');
   const diary = document.getElementById('page-diary');
   const diaryPosts = document.getElementById('diary-posts');
+  const firstSlide = document.querySelector('.slide');
+  const allSlides = document.querySelectorAll('.slide');
 
   let selectedItem;
   let selectBg;
@@ -34,94 +35,217 @@
   let title;
   let imgOverlay = false;
 
-  // Diary Posts
-  if (currentPage == 'diary') {
-    let slideNumber = 0;
-    let nextSlideUrl;
-    let nextSlide = () => {
-      if (slideNumber < diaryPostDate.length) {
-        let nextSlideUrl = `/diary/${diaryPostDate[slideNumber]}.html`;
-        slideNumber ++;
-        return nextSlideUrl;
-      } else {
-        slideNumber = 0;
-        let nextSlideUrl = `/diary/${diaryPostDate[0]}.html`;
-        slideNumber ++;
-        return nextSlideUrl;
+  // URL Parameter to variable
+  const getParameterByName = (name, url) => {
+    if (!url) {
+      const currentURL = window.location.href;
+      const target = name.replace(/[\[\]]/g, '\\$&');
+      const regex = new RegExp(`[?&]${target}(=([^&#]*)|&|#|$)`),
+        results = regex.exec(currentURL);
+      if (!results) {
+        return null;
       }
-    };
-
-    diaryPosts.addEventListener('click', () => {
-      request.open('Get', nextSlide());
-      request.send();
-    });
-
-    // create new post
-    let createPost = (content) => {
-      let newcontent = document.createElement('div');
-      newcontent.className = 'slides';
-      newcontent.innerHTML = content;
-      // newcontent.onmouseover = showDetails;
-      // newcontent.onmouseout = hideDetails;
-      diaryPosts.appendChild(newcontent);
-    };
-
-    // set up a request
-    var request = new XMLHttpRequest();
-
-
-    var showDetails = () => {
-      let slideContent = document.querySelectorAll('.slide-content');
-      console.log(slideContent[0]);
-      let slideDate = slideContent[0].getAttribute('data-date');
-      let slideTitle = slideContent[0].getAttribute('data-title');
-      currentSlideTitle.innerHTML = `<span>${slideTitle}</span><br> ${slideDate}`;
-      currentSlideTitle.classList.add('active');
-    };
-
-    var hideDetails = () => {
-      // console.log('out');
-      currentSlideTitle.classList.remove('active');
-    };
-
-    // keep track of the request
-    request.onreadystatechange = function() {
-      // check if the response data send back to us
-      if(request.readyState === 4) {
-        if(request.status === 200) {
-          // update the HTML of the element
-          createPost(request.responseText);
-        } else {
-          // otherwise display an error message
-          diaryPosts.innerHTML = 'An error occurred during your request: ' +  request.status + ' ' + request.statusText;
-        }
+      if (!results[2]) {
+        return '';
       }
+      return decodeURIComponent(results[2].replace(/\+/g, ' '));
     }
-
-    // make initial request
-    request.open('Get', nextSlide());
-    request.send();
-
-    // Array.prototype.forEach.call(slideContent, (el, i) => {
-    //   slideContent[i].addEventListener('mouseover', () => {
-    //     let slideDate = slideContent[i].getAttribute('data-date');
-    //     let slideTitle = slideContent[i].getAttribute('data-title');
-    //     currentSlideTitle.innerHTML = `<span>${slideTitle}</span><br> ${slideDate}`;
-    //     currentSlideTitle.classList.add('active');
-    //   });
-    //   slideContent[i].addEventListener('mouseout', () => {
-    //     currentSlideTitle.classList.remove('active');
-    //   });
-    // });
+    return null;
   };
 
-  // const showDetails = (i) => {
-  //   console.log('details');
-  //   let slideDate = slideContent[i].getAttribute('data-date');
-  //   let slideTitle = slideContent[i].getAttribute('data-title');
-  //   currentSlideTitle.innerHTML = `<span>${slideTitle}</span><br> ${slideDate}`;
-  //   currentSlideTitle.classList.add('active');
-  // };
+  let activeYear = () => {
+    let currentSlide = document.querySelector('.current');
+    let currentSlideDate = currentSlide.querySelector('.slide-content').getAttribute('data-date');
+    let currentYear = currentSlideDate.slice(-2);
+    let currentYearNav = document.getElementById('year');
+    currentYearNav.innerHTML = currentYear;
+    let yearSelect = document.querySelector('.year-select');
+    let diaryNavLinks = document.querySelectorAll('.diary-nav-link ');
+    for (var i = 0; i < diaryNavLinks.length; i++) {
+      diaryNavLinks[i].classList.remove('active-year');
+    }
+    yearSelect.querySelector(`.year-${currentYear}`).classList.add('active-year');
+
+    switch (currentYear) {
+      case '17':
+        //Statements executed when the result of expression matches value1
+
+
+        break;
+      case '16':
+        //Statements executed when the result of expression matches value2
+        break;
+      case '15':
+        //Statements executed when the result of expression matches valueN
+        break;
+      case '14':
+        //Statements executed when the result of expression matches valueN
+        break;
+      case '13':
+        //Statements executed when the result of expression matches valueN
+        break;
+      default:
+        //Statements executed when none of the values match the value of the expression
+        break;
+    }
+  };
+
+  let diaryNavToggle = () => {
+    const diaryNavToggleBtn = document.querySelector('.diary-nav-toggle');
+    const diaryNavcontainer = document.querySelector('.diary-nav-container');
+    const yearSelect = document.querySelector('.year-select');
+    diaryNavToggleBtn.addEventListener('click', function(e) {
+      e.preventDefault();
+      diaryNavcontainer.classList.add('on');
+    });
+    yearSelect.addEventListener('click', function(e) {
+      e.preventDefault();
+      diaryNavcontainer.classList.remove('on');
+    });
+  }
+
+  let goToYear = () => {
+    let diaryNavLink = document.querySelectorAll('.diary-nav-link');
+    const diaryNavcontainer = document.querySelector('.diary-nav-container');
+    for (var i = 0; i < diaryNavLink.length; i++) {
+      diaryNavLink[i].addEventListener('click', function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        let clickedYear = e.srcElement.innerHTML.slice(-2);
+        let correspondingYearElm = document.querySelector(`.year-date-${clickedYear}`);
+        let currentSlide = document.querySelector('.current');
+
+        for (let i = 0; i < allSlides.length; i++) {
+          allSlides[i].classList.remove('active', 'current');
+        }
+        correspondingYearElm.parentNode.classList.add('active', 'current');
+        // diaryNavcontainer.classList.remove('on');
+        let currentSlideDate = correspondingYearElm.getAttribute('data-date');
+        pushDate(currentSlideDate);
+
+        let img = correspondingYearElm.querySelector('img');
+        let dataSrc = img.getAttribute('data-src');
+        if (dataSrc) {
+          img.src = dataSrc;
+        }
+        diaryNavcontainer.classList.remove('on');
+        activeYear();
+      });
+    }
+  }
+
+
+  let pushDate = (date) => {
+    let stateObj = { title: "post" };
+    history.pushState(stateObj, "Diary Post", "?date=" + date);
+  }
+
+  // Diary
+  let triggerNextSlide = () => {
+    // hide last slide description
+    let cursorFollow = document.querySelectorAll('.cursor-follow');
+    Array.prototype.forEach.call(cursorFollow, (el, i) => {
+      cursorFollow[i].classList.remove('active');
+    });
+    let currentSlide = document.querySelector('.current');
+    let nextSlide = currentSlide.nextElementSibling;
+    // go to next slide
+    if (nextSlide === null) {
+      // start at beginning
+      let firstSlide = document.querySelector('.slide');
+      // remove active class from all slides
+      for (let i = 0; i < allSlides.length; i++) {
+        allSlides[i].classList.remove('active');
+      }
+      // update url with first slide date
+      let firstSlideDate = firstSlide.querySelector('.slide-content').getAttribute('data-date');
+      pushDate(firstSlideDate);
+      let img = firstSlide.querySelector('img');
+      let dataSrc = img.getAttribute('data-src');
+      if (dataSrc) {
+        img.src = dataSrc;
+      }
+      currentSlide.classList.remove('current');
+      firstSlide.classList.add('active', 'current');
+      activeYear();
+    } else {
+      let nextSlideDate = nextSlide.querySelector('.slide-content').getAttribute('data-date');
+      pushDate(nextSlideDate);
+      if (nextSlide.nextElementSibling){
+        let nextImg = nextSlide.nextElementSibling.querySelector('img');
+        let nextDataSrc = nextImg.getAttribute('data-src');
+        if (nextDataSrc) {
+          nextImg.src = nextDataSrc;
+        }
+      }
+      let img = nextSlide.querySelector('img');
+      let dataSrc = img.getAttribute('data-src');
+      if (dataSrc) {
+        img.src = dataSrc;
+      }
+      currentSlide.classList.remove('current');
+      nextSlide.classList.add('active', 'current');
+      activeYear();
+    }
+  }
+
+  let arrowNav = () => {
+    document.onkeydown = (e) => {
+      e = e || window.event;
+      switch(e.which || e.keyCode) {
+        case 37: triggerNextSlide(); // left
+        break;
+
+        case 39: triggerNextSlide(); // right
+        break;
+
+        default: return; // exit this handler for other keys
+      }
+    }
+  }
+
+  // diary starting place
+  let diaryStartingPlace = () => {
+    // if url has date
+    let entryDate = getParameterByName('date');
+    if (entryDate){
+      let startDate = document.querySelector(`[data-date='${entryDate}']`);
+      let startDateImg = startDate.querySelector('img');
+      let startDateDataSrc = startDateImg.getAttribute('data-src');
+      if (startDateDataSrc) {
+        startDateImg.src = startDateDataSrc;
+      }
+      startDate.parentNode.classList.add('active', 'current');
+      activeYear();
+    } else {
+      // FIRST SLIDE
+      let firstSlideImg = firstSlide.querySelector('img');
+      let firstSlideDataSrc = firstSlideImg.getAttribute('data-src');
+      if (firstSlideDataSrc) {
+        firstSlideImg.src = firstSlideDataSrc;
+        let nextImg = firstSlide.nextElementSibling.querySelector('img');
+        let nextDataSrc = nextImg.getAttribute('data-src');
+        if (nextDataSrc) {
+          nextImg.src = nextDataSrc;
+        }
+      }
+      firstSlide.classList.add('active', 'current');
+      activeYear();
+    }
+  }
+
+  let diarySetUp = () => {
+    for (let i = 0; i < allSlides.length; i++) {
+      allSlides[i].classList.add('index' + [i]);
+      let slideYear = allSlides[i].querySelector('.slide-content').getAttribute('data-date').slice(-2);
+      allSlides[i].querySelector('.slide-content').classList.add(`year-date-${slideYear}`);
+
+      // click on next slide
+      allSlides[i].addEventListener('click', function(e) {
+        triggerNextSlide();
+      });
+    }
+  }
 
   // close overlay
   const closeOverlay = () => {
@@ -134,16 +258,15 @@
 
   let lastKnownScrollPosition = 0;
   let ticking = false;
-  const description = document.querySelector('.description');
-
+  const scrollFadeOut = document.querySelector('.scroll-fade-out');
   let newOpacity;
   let opacityNumber;
 
-  function fadeOutDescription(scrollPos) {
-    if (homePage) {
+  function fadeOutDescription(scrollPos, el) {
+    if (homePage || diary) {
       newOpacity = 1 - (scrollPos * 0.003);
       opacityNumber = Math.max(newOpacity.toFixed(2), 0);
-      description.setAttribute('style', `opacity: ${opacityNumber};`);
+      scrollFadeOut.setAttribute('style', `opacity: ${opacityNumber};`);
     }
   }
 
@@ -240,6 +363,23 @@
   };
 
   // homepage cursor follow
+  const hoverDtl = (hoverObj) => {
+    Array.prototype.forEach.call(hoverObj, (el, i) => {
+
+      hoverObj[i].addEventListener('mouseover', () => {
+        const activeCursor = el.querySelector('.cursor-follow');
+        activeCursor.classList.add('active');
+      });
+
+      hoverObj[i].addEventListener('mouseout', () => {
+        const activeCursor = el.querySelector('.cursor-follow');
+        activeCursor.classList.remove('active');
+      });
+    });
+  };
+
+
+
   const portfolioSectionHover = () => {
     if (homePage) {
       Array.prototype.forEach.call(portfolioSection, (el, i) => {
@@ -256,33 +396,19 @@
   };
 
   document.addEventListener('mousemove', (e) => {
-    if (homePage) {
+    if (homePage || diary) {
       const activePortfolioHover = document.querySelectorAll('.cursor-follow.active');
       Array.prototype.forEach.call(activePortfolioHover, (el) => {
         el.setAttribute('style', `left: ${e.pageX}px; top: ${e.pageY}px;`);
       });
     }
+
   });
 
-  // customize about page to someone
-  const getParameterByName = (name, url) => {
-    if (!url) {
-      const currentURL = window.location.href;
-      const target = name.replace(/[\[\]]/g, '\\$&');
-      const regex = new RegExp(`[?&]${target}(=([^&#]*)|&|#|$)`),
-        results = regex.exec(currentURL);
-      if (!results) {
-        return null;
-      }
-      if (!results[2]) {
-        return '';
-      }
-      return decodeURIComponent(results[2].replace(/\+/g, ' '));
-    }
-    return null;
-  };
 
-  // current page nav
+
+
+  // current page
   const checkCurrentPage = () => {
     if (currentPage !== 'diary' && currentPage !== 'home') {
       const activeNav = document.querySelector(`.nav-${currentPage}`);
@@ -294,6 +420,20 @@
       if (target) {
         customIntro.innerHTML = `Hi, ${target}`;
       }
+    }
+    if (currentPage === 'diary') {
+
+      // let firstSlideImg = firstSlide.querySelector('img');
+      // let firstSlideDataSrc = firstSlideImg.getAttribute('data-src');
+      // let entryDate;
+      // let year = firstSlideDataSrc.slice(-6,-4)
+      // activeYear(year);
+      diarySetUp();
+      diaryStartingPlace();
+      hoverDtl(slide);
+      arrowNav();
+      diaryNavToggle();
+      goToYear();
     }
   };
 

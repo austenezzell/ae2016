@@ -31,8 +31,44 @@ img, video {
   height: auto;
 }
 
+.color {
+  mix-blend-mode: color;
+}
+.color-burn {
+  mix-blend-mode: color-burn;
+}
+.darken {
+  mix-blend-mode: darken;
+}
 .difference {
   mix-blend-mode: difference;
+}
+.exclusion {
+  mix-blend-mode: exclusion;
+}
+.hard-light {
+  mix-blend-mode: hard-light;
+}
+.hue {
+  mix-blend-mode: hue;
+}
+.lighten {
+  mix-blend-mode: lighten;
+}
+.luminosity {
+  mix-blend-mode: luminosity;
+}
+.multiply {
+  mix-blend-mode: multiply;
+}
+.overlay {
+  mix-blend-mode: overlay;
+}
+.screen {
+  mix-blend-mode: screen;
+}
+.soft-light {
+  mix-blend-mode: soft-light;
 }
 
 .copy-module {

@@ -25,6 +25,7 @@ gulp.task('watch', () => {
   gulp.watch(paths.scss, ['styles', browserSync.reload]);
   gulp.watch(paths.js, ['bundle', browserSync.reload]);
   gulp.watch(paths.img, ['copyfiles', browserSync.reload]);
+  gulp.watch(paths.json, [['copyfiles', 'html'], browserSync.reload]);
 });
 
 const buildTasks = ['html', 'styles', 'bundle', 'copyfiles'];

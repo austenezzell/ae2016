@@ -9,18 +9,93 @@
   .description {
     z-index: 999;
   }
+  section.page-container, footer {
+    background-color: white;
+  }
+  .cursor-follow {
+    position: fixed;
+    display: none;
+    @include breakpoint(md) {
+      display: inline;
+    }
+  }
+  .diary-nav-container {
+    .year-select {
+      visibility: hidden;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: #2E00EE;
+      ul {
+        margin: 0;
+        padding: 0;
+        li {
+          list-style: none;
+          margin: 0;
+        }
+      }
+      a {
+        margin: 15px 0;
+        display: inline-block;
+      }
+      a.active-year {
+        text-decoration: line-through;
+      }
+    }
+    .diary-nav-year {
+      visibility: visible;
+      position: fixed;
+      z-index: 3;
+      width: 80px;
+      height: 120px;
+      left: 30px;
+      top: 50%;
+      margin-top: -60px;
+      a {
+        color: white;
+        display: block;
+      }
+      .h5 {
+        line-height: 1;
+        user-select: none;
+        margin: 0;
+      }
+      span.year {
+        display: block;
+      }
+    }
+
+    &.on {
+      .year-select {
+        visibility: visible;
+      }
+      .diary-nav-year {
+        visibility: hidden;
+      }
+    }
+  }
 }
 
-
 .slide {
+  display: none;
   position: absolute;
   width: 100%;
   height: 100%;
   left: 0;
   top: 0;
   cursor: url('/img/cursor-pointer.png') 31 23,auto;
+  background-size: cover;
   &.off {
     display: none;
+  }
+  &.active {
+    display: flex;
+  }
+  .slide-content {
+    pointer-events: none;
+    user-select: none;
   }
 }
 

@@ -1,7 +1,6 @@
 @@include('_header.html', { "title": "Diary / Austen Ezzell", "description": "Austen's Photo Diary", "body-class": "diary-page", "data-page": "diary" })
-
 <div class="wrap" id="page-diary">
-  <section>
+  <section class="page-container">
     <div id="title" class="home-intro row" >
       <h2 class="col-xs-12  align-middle-xs custom-intro">Diary</h2>
     </div>
@@ -12,7 +11,29 @@
       </div>
     </div>
 
-    <div id="diary-posts"></div>
+    <div id="diary-posts">
+      @@loop("_diary-post.html", "data.json")
+    </div>
+
+    <div class="diary-nav-container">
+      <div class="diary-nav-year difference row scroll-fade-out">
+        <div class="currentYear align-middle-xs">
+          <a class="h5 diary-nav-toggle" href="#">20<br><span id="year" class="year">17</span></a>
+        </div>
+      </div>
+      <div class="year-select row">
+        <div class="years align-middle-xs text-xs-center col-xs-12">
+          <ul class="">
+            <li><a href="#" class="diary-nav-link h1 year-17">2017</a></li>
+            <li><a href="#" class="diary-nav-link h1 year-16">2016</a></li>
+            <li><a href="#" class="diary-nav-link h1 year-15">2015</a></li>
+            <li><a href="#" class="diary-nav-link h1 year-14">2014</a></li>
+            <li><a href="#" class="diary-nav-link h1 year-13">2013</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
 
   </section>
 </div>

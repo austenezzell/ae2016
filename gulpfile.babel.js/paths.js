@@ -10,4 +10,5 @@ export const paths = {
     '!./source/html/_templates{,/**}',
   ],
   docs: './docs',
+  json: './source/html/**/*.json',
 };
