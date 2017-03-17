@@ -34,6 +34,7 @@
   let selectHref;
   let title;
   let imgOverlay = false;
+  let slideCount = 0;
 
   // URL Parameter to variable
   const getParameterByName = (name, url) => {
@@ -61,33 +62,10 @@
     currentYearNav.innerHTML = currentYear;
     let yearSelect = document.querySelector('.year-select');
     let diaryNavLinks = document.querySelectorAll('.diary-nav-link ');
-    for (var i = 0; i < diaryNavLinks.length; i++) {
+    for (let i = 0; i < diaryNavLinks.length; i++) {
       diaryNavLinks[i].classList.remove('active-year');
     }
     yearSelect.querySelector(`.year-${currentYear}`).classList.add('active-year');
-
-    switch (currentYear) {
-      case '17':
-        //Statements executed when the result of expression matches value1
-
-
-        break;
-      case '16':
-        //Statements executed when the result of expression matches value2
-        break;
-      case '15':
-        //Statements executed when the result of expression matches valueN
-        break;
-      case '14':
-        //Statements executed when the result of expression matches valueN
-        break;
-      case '13':
-        //Statements executed when the result of expression matches valueN
-        break;
-      default:
-        //Statements executed when none of the values match the value of the expression
-        break;
-    }
   };
 
   let diaryNavToggle = () => {
@@ -107,7 +85,7 @@
   let goToYear = () => {
     let diaryNavLink = document.querySelectorAll('.diary-nav-link');
     const diaryNavcontainer = document.querySelector('.diary-nav-container');
-    for (var i = 0; i < diaryNavLink.length; i++) {
+    for (let i = 0; i < diaryNavLink.length; i++) {
       diaryNavLink[i].addEventListener('click', function(e) {
         e.preventDefault();
         e.stopPropagation();
@@ -118,6 +96,7 @@
         for (let i = 0; i < allSlides.length; i++) {
           allSlides[i].classList.remove('active', 'current');
         }
+        slideCount = 0;
         correspondingYearElm.parentNode.classList.add('active', 'current');
         // diaryNavcontainer.classList.remove('on');
         let currentSlideDate = correspondingYearElm.getAttribute('data-date');
@@ -134,58 +113,101 @@
     }
   }
 
-
   let pushDate = (date) => {
     let stateObj = { title: "post" };
     history.pushState(stateObj, "Diary Post", "?date=" + date);
   }
 
   // Diary
-  let triggerNextSlide = () => {
+  let triggerNextSlide = (direction) => {
     // hide last slide description
     let cursorFollow = document.querySelectorAll('.cursor-follow');
-    Array.prototype.forEach.call(cursorFollow, (el, i) => {
-      cursorFollow[i].classList.remove('active');
-    });
     let currentSlide = document.querySelector('.current');
     let nextSlide = currentSlide.nextElementSibling;
-    // go to next slide
-    if (nextSlide === null) {
-      // start at beginning
-      let firstSlide = document.querySelector('.slide');
-      // remove active class from all slides
-      for (let i = 0; i < allSlides.length; i++) {
-        allSlides[i].classList.remove('active');
+    let previousSlide = currentSlide.previousElementSibling;
+    let firstSlide = document.querySelector('.slide');
+    var lastSlide = diaryPosts.lastElementChild;
+    let currentSlideCursor = currentSlide.querySelector('.cursor-follow');
+
+
+    // hide description on click
+    currentSlideCursor.classList.remove('active');
+
+    // go to previous slide
+    if (direction == 'back'){
+      if (previousSlide === null) {
+        // go to end
+        for (let i = 0; i < allSlides.length; i++) {
+          allSlides[i].classList.remove('active');
+        }
+        slideCount = 0;
+        // update url with last slide date
+        let lastSlideDate = lastSlide.querySelector('.slide-content').getAttribute('data-date');
+        pushDate(lastSlideDate);
+        let img = lastSlide.querySelector('img');
+        let dataSrc = img.getAttribute('data-src');
+        if (dataSrc) {
+          img.src = dataSrc;
+        }
+        currentSlide.classList.remove('current', 'active');
+        lastSlide.classList.add('active', 'current');
+        activeYear();
+      } else {
+        let previousSlideDate = previousSlide.querySelector('.slide-content').getAttribute('data-date');
+        pushDate(previousSlideDate);
+        let img = previousSlide.querySelector('img');
+        let dataSrc = img.getAttribute('data-src');
+        if (dataSrc) {
+          img.src = dataSrc;
+        }
+        currentSlide.classList.remove('current', 'active');
+        previousSlide.classList.add('active', 'current');
+        activeYear();
       }
-      // update url with first slide date
-      let firstSlideDate = firstSlide.querySelector('.slide-content').getAttribute('data-date');
-      pushDate(firstSlideDate);
-      let img = firstSlide.querySelector('img');
-      let dataSrc = img.getAttribute('data-src');
-      if (dataSrc) {
-        img.src = dataSrc;
-      }
-      currentSlide.classList.remove('current');
-      firstSlide.classList.add('active', 'current');
-      activeYear();
     } else {
-      let nextSlideDate = nextSlide.querySelector('.slide-content').getAttribute('data-date');
-      pushDate(nextSlideDate);
-      if (nextSlide.nextElementSibling){
-        let nextImg = nextSlide.nextElementSibling.querySelector('img');
-        let nextDataSrc = nextImg.getAttribute('data-src');
-        if (nextDataSrc) {
-          nextImg.src = nextDataSrc;
+      if (nextSlide === null) {
+        // start at beginning
+        for (let i = 0; i < allSlides.length; i++) {
+          allSlides[i].classList.remove('active');
+        }
+        slideCount = 0;
+        // update url with first slide date
+        let firstSlideDate = firstSlide.querySelector('.slide-content').getAttribute('data-date');
+        pushDate(firstSlideDate);
+        let img = firstSlide.querySelector('img');
+        let dataSrc = img.getAttribute('data-src');
+        if (dataSrc) {
+          img.src = dataSrc;
+        }
+        currentSlide.classList.remove('current');
+        firstSlide.classList.add('active', 'current');
+        activeYear();
+      } else {
+        let nextSlideDate = nextSlide.querySelector('.slide-content').getAttribute('data-date');
+        pushDate(nextSlideDate);
+        let img = nextSlide.querySelector('img');
+        let dataSrc = img.getAttribute('data-src');
+        if (dataSrc) {
+          img.src = dataSrc;
+        }
+        // clear old slides
+        if (slideCount < 3) {
+          slideCount ++;
+        } else {
+          currentSlide.previousElementSibling.previousElementSibling.previousElementSibling.classList.remove('active');
+        }
+        currentSlide.classList.remove('current');
+        nextSlide.classList.add('active', 'current');
+        activeYear();
+        // preload next image
+        if (nextSlide.nextElementSibling){
+          let nextImg = nextSlide.nextElementSibling.querySelector('img');
+          let nextDataSrc = nextImg.getAttribute('data-src');
+          if (nextDataSrc) {
+            nextImg.src = nextDataSrc;
+          }
         }
       }
-      let img = nextSlide.querySelector('img');
-      let dataSrc = img.getAttribute('data-src');
-      if (dataSrc) {
-        img.src = dataSrc;
-      }
-      currentSlide.classList.remove('current');
-      nextSlide.classList.add('active', 'current');
-      activeYear();
     }
   }
 
@@ -193,10 +215,10 @@
     document.onkeydown = (e) => {
       e = e || window.event;
       switch(e.which || e.keyCode) {
-        case 37: triggerNextSlide(); // left
+        case 37: triggerNextSlide('back'); // left
         break;
 
-        case 39: triggerNextSlide(); // right
+        case 39: triggerNextSlide('forward'); // right
         break;
 
         default: return; // exit this handler for other keys
@@ -236,10 +258,8 @@
 
   let diarySetUp = () => {
     for (let i = 0; i < allSlides.length; i++) {
-      allSlides[i].classList.add('index' + [i]);
       let slideYear = allSlides[i].querySelector('.slide-content').getAttribute('data-date').slice(-2);
       allSlides[i].querySelector('.slide-content').classList.add(`year-date-${slideYear}`);
-
       // click on next slide
       allSlides[i].addEventListener('click', function(e) {
         triggerNextSlide();
