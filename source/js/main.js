@@ -338,6 +338,9 @@
         selectHref = el.getAttribute('href');
         body.classList.add('screen-transitioning');
         portfolioTransition.classList.add('active');
+        if (selectHref == '/diary/') {
+          portfolioTransition.setAttribute('style', 'background: #ffffff');
+        }
         transitionalBgImg.setAttribute('style', `background-image: url(${selectBg});`);
         const link = document.createElement('link');
         link.href = selectHref;
@@ -359,6 +362,9 @@
         link.href = selectHref;
         link.rel = 'prerender';
         body.classList.add('screen-transitioning');
+        if (selectHref == '/diary/') {
+          portfolioTransition.setAttribute('style', 'background: #ffffff');
+        }
         portfolioTransition.classList.add('active');
         transitionalBgImg.setAttribute('style',
           `background-image: url(${preloadTransitionImage});`
