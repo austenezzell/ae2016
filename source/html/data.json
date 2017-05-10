@@ -1,4 +1,8 @@
 [
+  { "filePath": "2017/05_02_17.jpg", "title": "Charleston SC", "date": "05_02_17", "width": 3, "offset": 7, "background": "none", "blend-mode": "" },
+  { "filePath": "2017/05_01_17.jpg", "title": "Charleston SC", "date": "05_01_17", "width": 4, "offset": 2, "background": "none", "blend-mode": "" },
+  { "filePath": "2017/04_08_17.jpg", "title": "Spring", "date": "04_08_17", "width": 3, "offset": 3, "background": "#ffffff", "blend-mode": "" },
+  { "filePath": "2017/03_19_17.jpg", "title": "Portland", "date": "03_19_17", "width": 4, "offset": 4, "background": "none", "blend-mode": "" },
   { "filePath": "2017/03_15_17.jpg", "title": "Two Years", "date": "03_15_17", "width": 8, "offset": 2, "background": "none", "blend-mode": "" },
   { "filePath": "2017/03_12_17.jpg", "title": "Sokol Blosser", "date": "03_12_17", "width": 6, "offset": 3, "background": "none", "blend-mode": "" },
   { "filePath": "2017/02_27_17.jpg", "title": "10 Months", "date": "02_27_17", "width": 4, "offset": 7, "background": "none", "blend-mode": "" },
